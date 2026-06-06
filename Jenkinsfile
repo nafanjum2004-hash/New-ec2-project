@@ -3,15 +3,25 @@ pipeline {
 
     stages {
 
-        stage('Test') {
-            steps {
-                echo 'Jenkins Pipeline Working Successfully'
-            }
-        }
-
         stage('Terraform Version') {
             steps {
                 sh 'terraform --version'
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('Terraform Validate') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform validate'
+                }
             }
         }
     }
