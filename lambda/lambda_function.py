@@ -1,6 +1,7 @@
 import boto3
 import os
 import json
+import time
 
 def lambda_handler(event, context):
 
@@ -21,21 +22,23 @@ def lambda_handler(event, context):
 
     instance_id = response["Instances"][0]["InstanceId"]
 
+    time.sleep(15)
+
     instance_details = ec2.describe_instances(
         InstanceIds=[instance_id]
     )
 
     instance = instance_details["Reservations"][0]["Instances"][0]
 
-  return {
-    "statusCode": 200,
-    "body": json.dumps({
-        "InstanceId": instance["InstanceId"],
-        "State": instance["State"]["Name"],
-        "InstanceType": instance["InstanceType"],
-        "Region": region,
-        "AvailabilityZone": instance["Placement"]["AvailabilityZone"],
-        "PrivateIP": instance.get("PrivateIpAddress", "N/A"),
-        "PublicIP": instance.get("PublicIpAddress", "N/A")
-    })
-}
+    return {
+        "statusCode": 200,
+        "body": json.dumps({
+            "InstanceId": instance["InstanceId"],
+            "State": instance["State"]["Name"],
+            "InstanceType": instance["InstanceType"],
+            "Region": region,
+            "AvailabilityZone": instance["Placement"]["AvailabilityZone"],
+            "PrivateIP": instance.get("PrivateIpAddress", "N/A"),
+            "PublicIP": instance.get("PublicIpAddress", "N/A")
+        })
+    }
