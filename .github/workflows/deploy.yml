@@ -28,3 +28,9 @@ jobs:
 
       - name: Run a deployment placeholder
         run: echo "Deployment workflow triggered"
+      - name: Show Input Values
+        run: |
+          echo "AMI ID: ${{ github.event.inputs.ami_id }}"
+          echo "Instance Type: ${{ github.event.inputs.instance_type }}"
+          echo "Key Name: ${{ github.event.inputs.key_name }}"
+          echo "AWS Region: ${{ github.event.inputs.aws_region }}"
