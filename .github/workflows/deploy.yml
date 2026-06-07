@@ -43,3 +43,8 @@ jobs:
 
       - name: Terraform Version
         run: terraform --version
+
+
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init
