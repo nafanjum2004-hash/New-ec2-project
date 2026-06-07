@@ -40,6 +40,9 @@ jobs:
           role-to-assume: arn:aws:iam::060795920646:role/github-actions-role
           aws-region: ${{ github.event.inputs.aws_region }}
 
+      - name: Verify AWS Login
+        run: aws sts get-caller-identity
+
       - name: Run a deployment placeholder
         run: echo "Deployment workflow triggered"
       - name: Show Input Values
