@@ -2,6 +2,22 @@ name: Deploy Project
 
 on:
   workflow_dispatch:
+    inputs:
+      ami_id:
+        description: 'AMI ID'
+        required: true
+
+      instance_type:
+        description: 'Instance Type'
+        required: true
+
+      key_name:
+        description: 'Key Pair Name'
+        required: true
+
+      aws_region:
+        description: 'AWS Region'
+        required: true
   
 jobs:
   deploy:

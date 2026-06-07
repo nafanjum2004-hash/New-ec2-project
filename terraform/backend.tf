@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "nafreen-terraform-state-bucket"
-    key    = "ec2-automation-jenkins/terraform.tfstate"
+    key    = "New-ec2-project/terraform.tfstate"
     region = "ap-south-1"
   }
 }
