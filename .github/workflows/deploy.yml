@@ -1,8 +1,11 @@
 name: Deploy Project
-
 on:
   workflow_dispatch:
     inputs:
+      action:
+        description: 'apply or destroy'
+        required: true
+
       ami_id:
         description: 'AMI ID'
         required: true
