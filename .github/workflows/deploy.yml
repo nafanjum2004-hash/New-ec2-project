@@ -34,3 +34,9 @@ jobs:
           echo "Instance Type: ${{ github.event.inputs.instance_type }}"
           echo "Key Name: ${{ github.event.inputs.key_name }}"
           echo "AWS Region: ${{ github.event.inputs.aws_region }}"
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Version
+        run: terraform --version
